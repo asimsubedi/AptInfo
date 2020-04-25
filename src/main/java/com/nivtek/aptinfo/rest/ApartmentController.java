@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.nivtek.aptinfo.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +22,16 @@ public class ApartmentController {
 	@Autowired
 	private ApartmentService apartmentService;
 
+	/**
+	 * The <i>getApartmentById()</i> method takes apartmentId as parameter and it
+	 * returns the apartment object if found. Else, Apartment Not Found message is
+	 * returned with appropriate status code and information.
+	 * 
+	 * @param apartmentId
+	 * @return ResponseEntity as HttpResponse containing the status code, header and
+	 *         response body
+	 * @throws ResourceNotFoundException
+	 */
 	@GetMapping("apartment/{id}")
 	public ResponseEntity<Apartment> getApartmentById(@PathVariable(value = "id") Long apartmentId)
 			throws ResourceNotFoundException {
