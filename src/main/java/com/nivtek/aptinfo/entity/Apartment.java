@@ -6,8 +6,14 @@ package com.nivtek.aptinfo.entity;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -17,18 +23,21 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_appartment")
-public class Appartment {
+public class Apartment {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	private int numOfRooms;
 	private int numOfResidents;
 	private Date rentedOn;
 
+	@OneToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id", unique = true, nullable = false, updatable = false)
 	private Address address;
 
-	public Appartment() {
+	public Apartment() {
 	}
 
 	/**
@@ -127,7 +136,7 @@ public class Appartment {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Appartment other = (Appartment) obj;
+		Apartment other = (Apartment) obj;
 		if (address == null) {
 			if (other.address != null)
 				return false;

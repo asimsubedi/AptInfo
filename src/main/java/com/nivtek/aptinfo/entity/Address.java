@@ -3,12 +3,23 @@
  */
 package com.nivtek.aptinfo.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 /**
  * @author AsimSubedi
  *
  */
+@Entity
+@Table(name = "tbl_address")
 public class Address {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	private String line1;
@@ -16,6 +27,12 @@ public class Address {
 	private String city;
 	private String state;
 	private String zip;
+
+	@OneToOne(optional = false, mappedBy = "address")
+	private Apartment apartment;
+	
+	@OneToOne(optional = false, mappedBy = "address")
+	private Resident resident;
 
 	public Address() {
 	}
