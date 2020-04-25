@@ -5,12 +5,26 @@ package com.nivtek.aptinfo.entity;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 /**
  * @author AsimSubedi
  *
  */
+@Entity
+@Table(name = "tbl_resident")
 public class Resident {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	private String firstName;
@@ -18,6 +32,8 @@ public class Resident {
 	private String email;
 	private String phone;
 
+	@OneToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id", unique = true, nullable = false, updatable = false)
 	private Address address;
 
 	private boolean currentResident;
