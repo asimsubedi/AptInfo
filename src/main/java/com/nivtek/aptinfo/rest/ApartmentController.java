@@ -1,5 +1,7 @@
 package com.nivtek.aptinfo.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,19 @@ public class ApartmentController {
 
 	@Autowired
 	private ApartmentService apartmentService;
+
+	/**
+	 * This method handles the request for getting the information about all the
+	 * apartments from the database. This method will return information about all
+	 * the apartments as a list.
+	 * 
+	 * @return List<Apartment> which contains all the apartments as a list
+	 */
+	@GetMapping("apartments/")
+	public List<Apartment> getAllApartments() {
+		return apartmentService.findAllApartment();
+
+	}
 
 	/**
 	 * The <i>getApartmentById()</i> method takes apartmentId as parameter and it

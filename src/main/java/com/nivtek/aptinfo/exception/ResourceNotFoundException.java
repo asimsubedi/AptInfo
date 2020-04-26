@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.nivtek.aptinfo.exception;
 
 import org.springframework.http.HttpStatus;
