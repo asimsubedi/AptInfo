@@ -3,6 +3,7 @@
  */
 package com.nivtek.aptinfo.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,22 @@ import com.nivtek.aptinfo.entity.Apartment;
  */
 @Service
 public class ApartmentServiceImpl implements ApartmentService {
-	
+
 	@Autowired
 	private ApartmentRepository apartmentRepository;
 
 	@Override
 	public Optional<Apartment> findById(Long apartmentId) {
+
 		return apartmentRepository.findById(apartmentId);
+
+	}
+
+	@Override
+	public List<Apartment> findAllApartment() {
+
+		return apartmentRepository.findAll();
+
 	}
 
 }
