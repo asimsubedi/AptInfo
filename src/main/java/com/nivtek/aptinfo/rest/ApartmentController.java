@@ -18,7 +18,7 @@ import com.nivtek.aptinfo.service.ApartmentService;
  *
  */
 @RestController
-@RequestMapping("api/v1/")
+@RequestMapping("api/v1/apartment/")
 public class ApartmentController {
 
 	@Autowired
@@ -31,7 +31,7 @@ public class ApartmentController {
 	 * 
 	 * @return List<Apartment> which contains all the apartments as a list
 	 */
-	@GetMapping("apartments/")
+	@GetMapping("all/")
 	public List<Apartment> getAllApartments() {
 		return apartmentService.findAllApartment();
 
@@ -47,8 +47,8 @@ public class ApartmentController {
 	 *         response body
 	 * @throws ResourceNotFoundException
 	 */
-	@GetMapping("apartment/{id}")
-	public ResponseEntity<Apartment> getApartmentById(@PathVariable(value = "id") Long apartmentId)
+	@GetMapping("{id}")
+	public ResponseEntity<Apartment> getApartmentById(@PathVariable(value = "id") int apartmentId)
 			throws ResourceNotFoundException {
 
 		Apartment apartment = apartmentService.findById(apartmentId)

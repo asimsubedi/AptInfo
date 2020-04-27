@@ -17,7 +17,7 @@ public interface ApartmentService {
 	 * @param apartmentId
 	 * @return Optional<Apartment>
 	 */
-	Optional<Apartment> findById(Long apartmentId);
+	Optional<Apartment> findById(int apartmentId);
 
 	/**
 	 * This method returns all the apartment objects from the database as an List.

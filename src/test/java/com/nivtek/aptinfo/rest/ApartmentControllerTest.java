@@ -46,7 +46,7 @@ class ApartmentControllerTest {
 	 */
 	@Test
 	@Disabled
-	@DisplayName("GET - /api/v1/departments - RETURN ALL Apartments")
+	@DisplayName("GET - /api/v1/apartment - RETURN ALL Apartments")
 	void testGetAllApartments() {
 	}
 
@@ -57,7 +57,7 @@ class ApartmentControllerTest {
 	 * @throws Exception
 	 */
 	@Test
-	@DisplayName("GET - /api/v1/department/{id} - RETURN Apartment")
+	@DisplayName("GET - /api/v1/apartment/{id} - RETURN Apartment")
 	void testGetApartmentById() throws Exception {
 
 		// setup our mocked Service
@@ -75,10 +75,10 @@ class ApartmentControllerTest {
 		mockApartment.setRentedOn(new Date());
 		mockApartment.setAddress(mockAddress);
 		
-		when(apartmentService.findById(1l)).thenReturn(Optional.of(mockApartment));
+		when(apartmentService.findById(1)).thenReturn(Optional.of(mockApartment));
 
 		// Execute the Mock Request
-		mockMvc.perform(get("/api/v1/1")).andExpect(status().isOk())
+		mockMvc.perform(get("/api/v1/apartment/1")).andExpect(status().isOk())
 				.andExpect(jsonPath("$.id", is(mockApartment.getId())))
 				.andExpect(jsonPath("$.numOfRooms", is(mockApartment.getNumOfRooms())));
 	}

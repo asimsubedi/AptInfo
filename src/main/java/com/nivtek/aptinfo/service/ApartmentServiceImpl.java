@@ -23,7 +23,7 @@ public class ApartmentServiceImpl implements ApartmentService {
 	private ApartmentRepository apartmentRepository;
 
 	@Override
-	public Optional<Apartment> findById(Long apartmentId) {
+	public Optional<Apartment> findById(int apartmentId) {
 
 		return apartmentRepository.findById(apartmentId);
 
