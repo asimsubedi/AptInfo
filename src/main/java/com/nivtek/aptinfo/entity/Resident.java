@@ -25,7 +25,7 @@ public class Resident {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private int id;
 
 	private String firstName;
 	private String lastName;
@@ -47,14 +47,14 @@ public class Resident {
 	/**
 	 * @return the id
 	 */
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
