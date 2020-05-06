@@ -22,6 +22,6 @@ public interface ApartmentRepository extends JpaRepository<Apartment, Long> {
 	 * @param id
 	 * @return Optional<Apartment> so that NPE can be prevented
 	 */
-	Optional<Apartment> findById(long id);
+	Optional<Apartment> findById(int id);
 
 }
