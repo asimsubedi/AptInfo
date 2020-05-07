@@ -15,45 +15,45 @@ import com.nivtek.aptinfo.service.ResidentService;
 
 /**
  * @author AsimSubedi
- *
  */
 @RestController
 @RequestMapping("api/v1/resident/")
 public class ResidentController {
 
-	@Autowired
-	private ResidentService residentService;
+    @Autowired
+    private ResidentService residentService;
 
-	/**
-	 * * The <i>getResidentById()</i> method takes residentId as parameter and it
-	 * returns the resident object if found. Else, Resident Not Found message is
-	 * returned with appropriate status code and information.
-	 * 
-	 * @param residentId
-	 * @return ResponseEntity as HttpResponse containing status code, header and
-	 *         body
-	 * @throws ResourceNotFoundException
-	 */
-	@GetMapping("{id}")
-	public ResponseEntity<Resident> getResidentById(@PathVariable(value = "id") int residentId)
-			throws ResourceNotFoundException {
 
-		Resident resident = residentService.findById(residentId)
-				.orElseThrow(() -> new ResourceNotFoundException("Resident Not Found!"));
+    /**
+     * * The <i>getResidentById()</i> method takes residentId as parameter and it
+     * returns the resident object if found. Else, Resident Not Found message is
+     * returned with appropriate status code and information.
+     *
+     * @param residentId
+     * @return ResponseEntity as HttpResponse containing status code, header and
+     * body
+     * @throws ResourceNotFoundException
+     */
+    @GetMapping("{id}")
+    public ResponseEntity<Resident> getResidentById(@PathVariable(value = "id") int residentId)
+            throws ResourceNotFoundException {
 
-		return ResponseEntity.ok().body(resident);
+        Resident resident = residentService.findById(residentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Resident Not Found!"));
 
-	}
+        return ResponseEntity.ok().body(resident);
 
-	/**
-	 * This method returns the collection of Resident Objects.
-	 * 
-	 * @return List<Resident> as response
-	 */
-	@GetMapping("all")
-	public List<Resident> getAllResidents() {
+    }
 
-		return residentService.findAllResident();
-	}
+    /**
+     * This method returns the collection of Resident Objects.
+     *
+     * @return List<Resident> as response
+     */
+    @GetMapping("all")
+    public List<Resident> getAllResidents() {
+
+        return residentService.findAllResident();
+    }
 
 }

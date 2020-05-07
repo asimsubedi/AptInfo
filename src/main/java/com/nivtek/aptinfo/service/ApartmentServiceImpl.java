@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.nivtek.aptinfo.service;
 
 import java.util.List;
